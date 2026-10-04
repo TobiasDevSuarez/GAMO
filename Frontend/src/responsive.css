@@ -29,10 +29,13 @@ button.escanear{
     display:none;
 }
 button.icono{
-    flex-direction: row;
-    gap: 1vh;
-    font-size: 1.8vh;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:row;
+  font-size: 2vh;
+  gap: 1vh;
+  background-color: transparent;
 }
 .lista{
     flex-direction: row;
@@ -40,7 +43,7 @@ button.icono{
 }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
 section{
     padding-left: 2%;
     padding-right: 2%;

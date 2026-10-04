@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 51">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fe9f17;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fe9f17;
+        stroke-miterlimit: 10;
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <path stroke= "var(--reloj2)" fill="none" d="m25.5,3C13.06,3,3,13.06,3,25.5s10.06,22.5,22.5,22.5,22.5-10.07,22.5-22.5S37.93,3,25.5,3Z"/>
+      <path fill= "var(--reloj2)" d="m37.52,33.11c0,.47-.13.96-.38,1.4-.78,1.36-2.53,1.84-3.88,1.04l-10.82-6.25c-.98-.56-1.5-1.62-1.41-2.69,0-.05,0-.11,0-.16v-12.5c0-1.58,1.27-2.84,2.83-2.84.79,0,1.49.32,2.02.83.5.52.83,1.22.83,2.02v11.26l9.4,5.44c.91.53,1.42,1.48,1.42,2.47Z"/>
+    </g>
+  </g>
+</svg>
