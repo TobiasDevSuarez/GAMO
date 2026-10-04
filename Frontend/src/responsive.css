@@ -1,0 +1,48 @@
+@media (min-width: 768px) {
+    main{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: grid;
+  grid-template: 
+  "HEA HEA HEA" auto
+  "FOO SEC SEC" 1fr
+  "FOO SEC SEC" auto/
+  auto 1fr 1fr
+  ;
+}
+footer{
+    width: 20vh;
+    flex-direction: column;
+    padding-top: 2vh;
+    align-items: start;
+    gap: 2vh;
+    justify-content: start;
+}
+header{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+button.escanear{
+    display:none;
+}
+button.icono{
+    flex-direction: row;
+    gap: 1vh;
+    font-size: 1.8vh;
+
+}
+.lista{
+    flex-direction: row;
+
+}
+}
+
+@media (max-width: 400px) {
+section{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+}
