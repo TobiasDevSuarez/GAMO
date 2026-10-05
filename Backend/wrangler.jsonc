@@ -12,7 +12,10 @@
     "python_workers",
     "disable_python_external_sdk"
   ],
-
+"vars": {
+    "VITE_SUPABASE_PUBLISHABLE_KEY": "sb_publishable_m_KekMaadJ8S-OGGmiQH0Q_XcEM5-Yb",
+    "VITE_SUPABASE_URL": "https://jodiwpujroawxynebvui.supabase.co"
+  },
   "observability": {
     "enabled": true
   }
