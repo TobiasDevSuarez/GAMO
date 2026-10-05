@@ -3,7 +3,9 @@ name = "gamo"
 version = "0.1.0"
 description = "Gamo API"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "supabase>=2.32.0",
+]
 
 [dependency-groups]
 dev = [
