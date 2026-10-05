@@ -1,14 +1,14 @@
 [project]
-name = "back"
+name = "gamo"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "workers-py>=1.9",
+    "workers-py>=1.17.0",
 ]
 
 [dependency-groups]
 dev = [
-    "workers-runtime-sdk",
+    "workers-runtime-sdk>=1.9.0",
 ]

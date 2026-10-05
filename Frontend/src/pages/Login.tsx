@@ -3,7 +3,7 @@
 
 function Login() {
   return (
-    <main className="dark">
+    <main className="">
       <header className="login">
         
 
