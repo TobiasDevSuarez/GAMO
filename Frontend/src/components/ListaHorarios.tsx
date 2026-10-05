@@ -1,6 +1,16 @@
 import Horario from "./Horario";
 
-function ListaHorarios({ horarios = [] }) {
+interface HorarioData {
+  estado: number;
+  fecha: string;
+  deporte: string;
+}
+
+interface ListaHorariosProps {
+  horarios: HorarioData[];
+}
+
+function ListaHorarios({ horarios }: ListaHorariosProps) {
   const ahora = new Date();
 
   // Inicio de hoy
@@ -32,7 +42,6 @@ function ListaHorarios({ horarios = [] }) {
 
   return (
     <div className="lista">
-
       <div className="bloque">
         <h3>Hoy</h3>
 
@@ -42,7 +51,7 @@ function ListaHorarios({ horarios = [] }) {
               key={index}
               estado={horario.estado}
               fecha={horario.fecha}
-              deporte= {horario.deporte}
+              deporte={horario.deporte}
             />
           ))}
         </div>
@@ -59,12 +68,12 @@ function ListaHorarios({ horarios = [] }) {
               key={index}
               estado={horario.estado}
               fecha={horario.fecha}
-              deporte= {horario.deporte}
+              deporte={horario.deporte}
             />
           ))}
         </div>
-        <button className="azul">Ver mas horarios</button>
 
+        <button className="azul">Ver mas horarios</button>
       </div>
     </div>
   );

@@ -1,4 +1,10 @@
-function Horario({ estado = 0, fecha, deporte }) {
+interface HorarioProps {
+  estado?: number;
+  fecha: string;
+  deporte: string;
+}
+
+function Horario({ estado = 0, fecha, deporte }: HorarioProps) {
   const estados = [
     "Pendiente", //hoy
     "Completó la clase",
@@ -34,7 +40,7 @@ function Horario({ estado = 0, fecha, deporte }) {
   );
 
   const diferencia = Math.floor(
-    (fechaDia - hoy) / (1000 * 60 * 60 * 24)
+    (fechaDia.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24)
   );
 
   let estadoFinal = estado;
