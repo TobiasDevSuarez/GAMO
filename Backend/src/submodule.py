@@ -1,11 +1,24 @@
+import json
+from fastapi import HTTPException
 from workers import fetch
-import hashlib
+
+from model import SocioCreate
+
+
+def get_supabase_config(env):
+    url = getattr(env, "SUPABASE_URL", None)
+    key = getattr(env, "SUPABASE_KEY", None)
+    if not url or not key:
+        raise HTTPException(
+            status_code=500,
+            detail="Faltan SUPABASE_URL o SUPABASE_KEY en la configuración del Worker.",
+        )
+
+    return url.rstrip("/"), key
+
 
 async def get_socios(env):
-    url = env.SUPABASE_URL
-    key = env.SUPABASE_KEY
-    print(url)
-    print(key)
+    url, key = get_supabase_config(env)
     response = await fetch(
         f"{url}/rest/v1/SOCIO?select=*",
         headers={
@@ -15,39 +28,32 @@ async def get_socios(env):
     )
 
     if not response.ok:
-        error = await response.text()
-        return {
-            "error": error,
-            "status": response.status,
-        }
+        raise HTTPException(
+            status_code=response.status,
+            detail=await response.text(),
+        )
 
     return await response.json()
 
-async def login(username, password):
-    hashed_password = hashlib.sha256(password)
 
-    user = 0 # Buscar al usuario
-    if hashed_password == user.hashed_password:
-        # Devolver token
-    else:
-        # Devolver mensaje fallido
+async def crear_socio(env, socio: SocioCreate):
+    url, key = get_supabase_config(env)
+    response = await fetch(
+        f"{url}/rest/v1/SOCIO",
+        method="POST",
+        headers={
+            "apikey": key,
+            "Authorization": f"Bearer {key}",
+            "Content-Type": "application/json",
+            "Prefer": "return=representation",
+        },
+        body=json.dumps(socio.model_dump()),
+    )
 
+    if not response.ok:
+        raise HTTPException(
+            status_code=response.status,
+            detail=await response.text(),
+        )
 
-'''
-trigger de sql (puede que esté algo mal)
-
-CREATE TRIGGER set_payment_status
-AFTER UPDATE ON deudas_pagos
-FOR EACH ROW
-BEGIN
-    IF NEW.fecha_pago is not NULL and NEW.fecha_pago != "" THEN
-        UPDATE socio SET estado_pago = "Al día"
-END
-'''
-
-
-async def update_user(user_id, new_status, env):
-    # Un update simple
-    pass
-
-
+    return await response.json()
