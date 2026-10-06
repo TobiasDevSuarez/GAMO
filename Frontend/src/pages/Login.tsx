@@ -3,7 +3,9 @@ import Header from "../components/Header";
 import { storage } from "../configuracion/Config";
 
 function Login() {
-  storage.set("modoOscuro", false);
+  if (!storage.exist("modoOscuro")) {
+    storage.set("modoOscuro", false);
+  }
   const modoOscuro = storage.get<boolean>("modoOscuro");
   return (
     <main className={modoOscuro ? " login dark": "login"}>
