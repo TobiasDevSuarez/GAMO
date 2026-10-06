@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import { storage } from "../configuracion/Config";
+import { storage } from "../database/Storage";
 
 function Login() {
   if (!storage.exist("modoOscuro")) {

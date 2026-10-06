@@ -1,13 +1,16 @@
 import NavBar from "../components/Navbar";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
-import { storage } from "../configuracion/Config";
-import { useState } from "react";
+import { storage } from "../database/Storage";
+import { api } from "../database/Api";
+import { useState, useEffect } from "react";
 
 function User() {
   const [modoOscuro, setModoOscuro] = useState(
     storage.get<boolean>("modoOscuro") ?? false
   );
+
+  const [respuesta, setRespuesta] = useState<unknown>(null);
 
   function cambiarModo(e: React.ChangeEvent<HTMLSelectElement>) {
     const nuevoModo = e.target.value === "true";
@@ -16,6 +19,16 @@ function User() {
     storage.set("modoOscuro", nuevoModo);
   }
 
+useEffect(() => {
+  api("/")
+    .then((resultado) => {
+      console.log("Respuesta de la API:", resultado);
+      setRespuesta(resultado);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}, []);
   return (
     <main className={modoOscuro ? "dark" : ""}>
       <section>
@@ -24,7 +37,7 @@ function User() {
         <div className="listabloques">
           <div className="bloque">
             <select
-            className="blanco"
+              className="blanco"
               value={String(modoOscuro)}
               onChange={cambiarModo}
             >
@@ -32,9 +45,15 @@ function User() {
               <option value="true">Modo oscuro</option>
             </select>
 
-            <Link to={"/"} className="rojo">
+            <Link to="/" className="rojo">
               Cerrar sesión
             </Link>
+          </div>
+
+          <div className="bloque">
+            <pre>
+              {JSON.stringify(respuesta, null, 2)}
+            </pre>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import ListaHorarios from "../components/ListaHorarios"
 import NavBar from "../components/Navbar"
 import Header from "../components/Header"
-import { storage } from "../configuracion/Config";
+import { storage } from "../database/Storage";
 function Clases() {
   const modoOscuro = storage.get<boolean>("modoOscuro");
   const horarios = [

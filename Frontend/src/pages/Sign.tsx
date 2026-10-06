@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { storage } from "../configuracion/Config";
+import { storage } from "../database/Storage";
 function Sign() {
   const modoOscuro = storage.get<boolean>("modoOscuro");
   

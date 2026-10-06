@@ -1,6 +1,6 @@
 import NavBar from "../components/Navbar"
 import Header from "../components/Header"
-import { storage } from "../configuracion/Config";
+import { storage } from "../database/Storage";
 function Home() {
   const modoOscuro = storage.get<boolean>("modoOscuro");
  

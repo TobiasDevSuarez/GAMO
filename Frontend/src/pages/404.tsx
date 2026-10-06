@@ -1,6 +1,6 @@
 import Icon from "../components/Icon";
 import {  useNavigate } from "react-router-dom";
-import { storage } from "../configuracion/Config";
+import { storage } from "../database/Storage";
 function Error() {
   const navigate = useNavigate();
   const modoOscuro = storage.get<boolean>("modoOscuro");
