@@ -41,7 +41,9 @@ a.icono{
     flex-direction: row;
 
 }
-
+section.centro .listabloques{
+  flex-direction: column;
+}
 }
 @media (max-width: 768px){
     ::-webkit-scrollbar {

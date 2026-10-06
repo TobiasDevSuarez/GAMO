@@ -93,6 +93,7 @@ section.login{
 section.centro{
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 main.login{
    grid-template: 
@@ -365,7 +366,6 @@ button.azul{
   max-width: 50vh;
   border-radius: 3vh;
   font-weight: 500;
-  color: var(--blanco);
   margin-top: 2vh;
   font-size: 1.6vh;
 }
