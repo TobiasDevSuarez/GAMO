@@ -2,11 +2,13 @@ import NavBar from "../components/Navbar"
 import Header from "../components/Header"
 import Icon from "../components/Icon";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { storage } from "../configuracion/Config";
 function Error() {
   const navigate = useNavigate();
+  const modoOscuro = storage.get<boolean>("modoOscuro");
+  
   return (
-    <main className="">
+    <main className={modoOscuro ? "dark": ""}>
       
 
       <section className="centro">

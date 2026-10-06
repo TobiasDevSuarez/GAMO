@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
 import Header from "../components/Header";
+import { storage } from "../configuracion/Config";
 function Escanear() {
+  const modoOscuro = storage.get<boolean>("modoOscuro");
+  
   const [codigo, setCodigo] = useState("");
 
   useEffect(() => {
@@ -51,7 +54,7 @@ function Escanear() {
   }, []);
 
   return (
-    <main >
+    <main className={modoOscuro ? "dark": ""}>
 <section className="escanear">
   <Header></Header>
  

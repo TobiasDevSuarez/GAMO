@@ -1,27 +1,47 @@
-import NavBar from "../components/Navbar"
-import Header from "../components/Header"
+import NavBar from "../components/Navbar";
+import Header from "../components/Header";
 import { Link } from "react-router-dom";
-function User() {
+import { storage } from "../configuracion/Config";
+import { useState } from "react";
 
+function User() {
+  const [modoOscuro, setModoOscuro] = useState(
+    storage.get<boolean>("modoOscuro") ?? false
+  );
+
+  function cambiarModo(e: React.ChangeEvent<HTMLSelectElement>) {
+    const nuevoModo = e.target.value === "true";
+
+    setModoOscuro(nuevoModo);
+    storage.set("modoOscuro", nuevoModo);
+  }
 
   return (
-    <main className="">
-      
-
+    <main className={modoOscuro ? "dark" : ""}>
       <section>
-     <Header/>
-     <div className="listabloques">
-      <div className="bloque">
-        <Link to={"/"} className="rojo">Cerrar sesión</Link>
-      </div>
+        <Header />
 
-     </div>
-   
+        <div className="listabloques">
+          <div className="bloque">
+            <select
+            className="blanco"
+              value={String(modoOscuro)}
+              onChange={cambiarModo}
+            >
+              <option value="false">Modo claro</option>
+              <option value="true">Modo oscuro</option>
+            </select>
+
+            <Link to={"/"} className="rojo">
+              Cerrar sesión
+            </Link>
+          </div>
+        </div>
       </section>
 
-     <NavBar/>
+      <NavBar />
     </main>
   );
 }
 
-export default User
+export default User;
