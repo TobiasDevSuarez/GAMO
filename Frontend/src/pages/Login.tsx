@@ -16,13 +16,12 @@ function Login() {
             <input className="blanco" type="password" placeholder="-----" />
             <Link to="/home" className="azul">Iniciar sesión</Link>
            
-
-          </form>
-          <div className="bloque3">
+<br />
+          
             <h4>No tiene una cuenta?</h4>
             <Link to="/crear"  className="blanco">Crear cuenta</Link>
             <button className="blanco">Iniciar sesión con Google</button>
-          </div>
+          </form>
       </div>
   
       </section>
