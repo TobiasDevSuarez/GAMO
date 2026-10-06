@@ -6,25 +6,21 @@ function Sign() {
   const [paso, setPaso] = useState(1);
   const navigate = useNavigate();
 
-  const siguiente = (e) => {
-    e.preventDefault();
-    setPaso(paso + 1);
+  const siguiente = () => {
+    setPaso(2);
   };
 
-  const anterior = (e) => {
-    e.preventDefault();
-    setPaso(paso - 1);
+  const anterior = () => {
+    setPaso(1);
   };
 
   const cancelar = () => {
     navigate("/");
   };
 
-  const crearCuenta = (e) => {
-    e.preventDefault();
-
+  const crearCuenta = () => {
     // Acá después podés agregar la lógica
-    // para guardar/registrar el usuario.
+    // para registrar el usuario.
 
     navigate("/");
   };
@@ -71,8 +67,14 @@ function Sign() {
                 className="blanco"
                 type="date"
               />
-<div className="divisorx">
-              
+
+              <button
+                type="button"
+                className="azul"
+                onClick={siguiente}
+              >
+                Siguiente
+              </button>
 
               <button
                 type="button"
@@ -81,13 +83,6 @@ function Sign() {
               >
                 Cancelar
               </button>
-              <button
-                className="azul"
-                onClick={siguiente}
-              >
-                Siguiente
-              </button>
-              </div>
             </div>
           )}
 
@@ -123,34 +118,55 @@ function Sign() {
               <label htmlFor="confirmarPassword">
                 Confirmar contraseña
               </label>
+
               <input
                 id="confirmarPassword"
                 className="blanco"
                 type="password"
                 placeholder="-----"
               />
-<div className="divisorx">
-  <button
+
+              <button
                 type="button"
-                className="blanco"
-                onClick={anterior}
-              >
-                Atrás
-              </button>
- <button
                 className="azul"
                 onClick={crearCuenta}
               >
                 Crear cuenta
               </button>
 
-              
-</div>
-             
+              <button
+                type="button"
+                className="blanco"
+                onClick={anterior}
+              >
+                Atrás
+              </button>
+
+              <button
+                type="button"
+                className="blanco"
+                onClick={cancelar}
+              >
+                Cancelar
+              </button>
             </div>
           )}
 
-         
+          {/* OPCIONES DE LOGIN */}
+          <div className="bloque3">
+            <h4>¿Ya tiene una cuenta?</h4>
+
+            <Link to="/" className="blanco">
+              Iniciar sesión
+            </Link>
+
+            <button
+              type="button"
+              className="blanco icono"
+            >
+              Iniciar sesión con Google
+            </button>
+          </div>
 
         </form>
       </section>

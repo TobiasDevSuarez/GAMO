@@ -5,7 +5,6 @@ function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const escaneando = location.pathname === "/escanear";
 
   return (
     <header className={location.pathname === "/" || location.pathname === "/crear" ? "login" : ""}>
