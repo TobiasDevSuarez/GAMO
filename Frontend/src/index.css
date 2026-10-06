@@ -90,6 +90,10 @@ section.login{
   padding-top: 5vh;
   border-radius: 2vh 2vh 0vh 0vh;
 }
+section.centro{
+  justify-content: center;
+  align-items: center;
+}
 main.login{
    grid-template: 
    "HEA HEA HEA" auto

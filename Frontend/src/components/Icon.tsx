@@ -9,6 +9,8 @@ import Tilde from "../assets/svg/tilde.svg?raw";
 import Equis from "../assets/svg/equis.svg?raw";
 import Logomini from "../assets/svg/logomini.svg?raw";
 import Logo from "../assets/svg/logo.svg?raw";
+import Socio from "../assets/svg/socios.svg?raw";
+import Triste from "../assets/svg/triste.svg?raw";
 
 interface IconProps {
   tipo?: number;
@@ -23,17 +25,19 @@ function Icon({
 }: IconProps) {
 
   const iconos = [
-    Home,
-    Calendario,
-    Usuario,
-    Lupa,
-    Qr,
-    Reloj1,
-    Reloj2,
-    Tilde,
-    Equis,
-    Logomini,
-    Logo,
+    Home,         //0
+    Calendario,   //1
+    Usuario,      //2
+    Lupa,         //3
+    Qr,           //4
+    Reloj1,       //5
+    Reloj2,       //6
+    Tilde,        //7
+    Equis,        //8
+    Logomini,     //9
+    Logo,         //10
+    Socio,        //11
+    Triste,       //12
   ];
 
   const colores = [

@@ -10,12 +10,14 @@ import './index.css'
 import './responsive.css'
 import Escanear from './pages/Escanear'
 import Sign from './pages/Sign'
+import Error from './pages/404'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/*" element={<Error />} />
         <Route path="/crear" element={<Sign />} />
         <Route path="/home" element={<Home />} />
         <Route path="/horarios" element={<Home />} />
