@@ -8,6 +8,7 @@ import Reloj2 from "../assets/svg/reloj2.svg?raw";
 import Tilde from "../assets/svg/tilde.svg?raw";
 import Equis from "../assets/svg/equis.svg?raw";
 import Logomini from "../assets/svg/logomini.svg?raw";
+import Logo from "../assets/svg/logo.svg?raw";
 
 interface IconProps {
   tipo?: number;
@@ -32,6 +33,7 @@ function Icon({
     Tilde,
     Equis,
     Logomini,
+    Logo,
   ];
 
   const colores = [
@@ -70,7 +72,6 @@ function Icon({
       className="icon"
       style={{
         width: `${tamaño}vh`,
-        height: `${tamaño}vh`,
       }}
     />
   );

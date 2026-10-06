@@ -7,12 +7,14 @@ import Login from './pages/Login'
 import './index.css'
 import './responsive.css'
 import Escanear from './pages/Escanear'
+import Sign from './pages/Sign'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/crear" element={<Sign />} />
         <Route path="/home" element={<Home />} />
         <Route path="/horarios" element={<Home />} />
         <Route path="/buscar" element={<Home />} />
