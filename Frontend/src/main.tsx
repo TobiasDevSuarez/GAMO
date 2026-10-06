@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import './index.css'
 import './responsive.css'
+import Escanear from './pages/Escanear'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -13,6 +14,10 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/horarios" element={<Home />} />
+        <Route path="/buscar" element={<Home />} />
+        <Route path="/usuario" element={<Home />} />
+        <Route path="/escanear" element={<Escanear />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

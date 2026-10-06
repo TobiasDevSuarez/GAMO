@@ -3,6 +3,7 @@
   /*Paleta de colores*/
   --azul: #025af5;  
   --blanco: #ffffff;
+  --siempreblanco: #ffffff;
   --gris: #f1f7fd;
   --gris2: #e8e9e9;
   --grisoscuro: #8a95aa;
@@ -50,7 +51,6 @@ main{
   top: 0;
   display: grid;
   grid-template: 
-  "HEA HEA HEA" auto
   "SEC SEC SEC" 1fr
   "FOO FOO FOO" auto/
   auto auto auto
@@ -58,7 +58,11 @@ main{
 }
 
 header{
-  height: 11vh;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 10vh;
   grid-area:HEA;
   background-color: var(--azul);
   display:flex;
@@ -68,6 +72,7 @@ header{
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 2vh; 
+  padding-bottom: 1vh; 
 
 
 }
@@ -90,7 +95,10 @@ height: 10vh;
 background-color: var(--blanco);
 }
 header h1{
-  color: var(--blanco);
+  color: var(--siempreblanco);
+}
+header .icon{
+  margin-bottom: 0.7vh;
 }
 footer{
    display:flex;
@@ -108,7 +116,7 @@ footer{
 
 section{
   padding: 3vh;
-  padding-top: 5vh;
+  padding-top: 13vh;
  grid-area:SEC;
   background-color: var(--gris);
   display:flex;
@@ -119,6 +127,9 @@ section{
   overflow-y: auto;
 
   
+}
+.listabloques{
+  padding-bottom: 10vh;
 }
 
 
@@ -163,7 +174,18 @@ span{
   margin-bottom: 2vh;
 
 }
-.lista{
+.bloque2{
+  width: 100%;
+  max-width: 50vh;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  margin-bottom: 2vh;
+
+}
+.listay{
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -173,7 +195,50 @@ span{
 position:relative;
   flex-wrap: wrap;
 }
+.listabloques{
+   display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5vh;
+  width: 100%;
+position:relative;
+  flex-wrap: wrap;
+}
+.listax{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+position:relative;
+  flex-wrap: wrap;
+}
+.listax span.nombre{
+  font-weight: 600;
+   display:flex;
+  justify-content: center;
+  align-items: center;
+width: 5vh;
+}
+.listax span.dia{
+  font-size: 1.8vh;
+   display:flex;
+  justify-content: center;
+  align-items: center;
+width: 5vh;
+border-radius: 5vh;
+height: 5vh;
+background-color: var(--blanco);
+}
+.listax span.dia.hoy{
+   color:var(--siempreblanco);
+  background-color: var(--azul);
+}
 
+.listax span.nombre.hoy{
+   color:var(--azul);
+}
 .rectangulo{
   width: 100%;
   max-width: 50vh;
@@ -261,25 +326,56 @@ position:relative;
   background-color: var(--grisoscuro);
 
 }
+a{
+  text-decoration: none;
+}
 button.azul{
   width: 100%;
   height: 5vh;
   background-color: var(--azul);
+  color: var(--siempreblanco);
   max-width: 50vh;
   border-radius: 3vh;
+  font-weight: 500;
   color: var(--blanco);
   margin-top: 2vh;
-  font-size: 1.5vh;
+  font-size: 1.6vh;
 }
-button.icono{
+a.azul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: var(--azul);
+  color: var(--siempreblanco);
+  max-width: 50vh;
+  border-radius: 3vh;
+  font-weight: 500;
+  color: var(--blanco);
+  margin-top: 2vh;
+  font-size: 1.6vh;
+}
+button:hover,a:hover{
+  cursor: pointer;
+}
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+a.icono{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction:column;
-  font-size: 1.5vh;
+  font-size: 0vh;
   background-color: transparent;
 }
-button.escanear{
+a.escanear{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 5vh;
   height: 5vh;
   background-color: var(--azul);
@@ -290,4 +386,120 @@ button.escanear{
   display:flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.pantalla-escanear {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
+}
+
+/* Cámara ocupa toda la pantalla */
+
+.lector-qr {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+/* El video de la cámara */
+
+.lector-qr video {
+  width: 100% ;
+  height: 100% ;
+  object-fit: cover;
+}
+
+/* Botón volver */
+
+.volver {
+  position: absolute;
+
+  top: 3vh;
+  left: 3vw;
+
+  z-index: 10;
+
+  width: 5vh;
+  height: 5vh;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffffffcc;
+
+  font-size: 3vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+/* Texto */
+
+.texto-escanear {
+  position: absolute;
+
+  top: 10vh;
+
+  z-index: 10;
+
+  text-align: center;
+
+  color: white;
+
+  pointer-events: none;
+}
+
+.texto-escanear h2 {
+  margin: 0;
+  font-size: 3vh;
+}
+
+.texto-escanear p {
+  margin-top: 1vh;
+  font-size: 2vh;
+}
+
+/* Código encontrado */
+
+.codigo {
+  position: absolute;
+
+  bottom: 5vh;
+
+  z-index: 10;
+
+  padding: 1.5vh 3vh;
+
+  border-radius: 15px;
+
+  background: white;
+
+  text-align: center;
+}
+
+.codigo p {
+  margin: 0;
+}
+
+.codigo strong {
+  font-size: 3vh;
 }

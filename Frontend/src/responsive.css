@@ -37,15 +37,47 @@ button.icono{
   gap: 1vh;
   background-color: transparent;
 }
-.lista{
+.listabloques{
     flex-direction: row;
 
 }
+
+}
+@media (max-width: 768px){
+    ::-webkit-scrollbar {
+  display: none;
 }
 
+* {
+  scrollbar-width: none;
+}
+}
+
+
 @media (max-width: 500px) {
+
+
 section{
     padding-left: 2%;
     padding-right: 2%;
+}
+}
+
+@media (max-width: 380px) {
+    h4{
+        font-size: 2vh;
+    }
+p{
+    font-size: 1.5vh;
+}
+.listax span.nombre{
+
+width: 3.5vh;
+}
+.listax span.dia{
+
+width: 3.5vh;
+
+height: 3.5vh;
 }
 }

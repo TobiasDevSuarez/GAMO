@@ -1,5 +1,5 @@
 import Horario from "./Horario";
-
+import Calendario from "./Calendario"
 interface HorarioData {
   estado: number;
   fecha: string;
@@ -41,11 +41,13 @@ function ListaHorarios({ horarios }: ListaHorariosProps) {
   });
 
   return (
-    <div className="lista">
+    <>
       <div className="bloque">
+      <Calendario/>
+
         <h3>Hoy</h3>
 
-        <div className="lista">
+        <div className="listay">
           {horariosHoy.map((horario, index) => (
             <Horario
               key={index}
@@ -62,7 +64,7 @@ function ListaHorarios({ horarios }: ListaHorariosProps) {
           Mañana
         </h3>
 
-        <div className="lista">
+        <div className="listay">
           {horariosManana.map((horario, index) => (
             <Horario
               key={index}
@@ -75,7 +77,7 @@ function ListaHorarios({ horarios }: ListaHorariosProps) {
 
         <button className="azul">Ver mas horarios</button>
       </div>
-    </div>
+    </>
   );
 }
 

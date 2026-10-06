@@ -1,27 +1,48 @@
 import Icon from "../components/Icon";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
     <footer>
-      <button className="icono">
-        <Icon tipo={0} color={1} /> Home
-      </button>
+      <NavLink to="/home" className="icono">
+        {({ isActive }) => (
+          <>
+            <Icon tipo={0} color={isActive ? 1 : 0} />
+            Home
+          </>
+        )}
+      </NavLink>
 
-      <button className="icono">
-        <Icon tipo={1}  color={0} /> Horarios
-      </button>
+      <NavLink to="/horarios" className="icono">
+        {({ isActive }) => (
+          <>
+            <Icon tipo={1} color={isActive ? 1 : 0} />
+            Horarios
+          </>
+        )}
+      </NavLink>
 
-      <button className="escanear">
-        <Icon tipo={4}  color={3} />
-      </button>
+      <NavLink to="/escanear" className="escanear">
+        <Icon tipo={4} color={2} tamaño={2.5} />
+      </NavLink>
 
-      <button className="icono">
-        <Icon tipo={2}  color={0} /> Buscar
-      </button>
+      <NavLink to="/buscar" className="icono">
+        {({ isActive }) => (
+          <>
+            <Icon tipo={3} color={isActive ? 1 : 0} />
+            Buscar
+          </>
+        )}
+      </NavLink>
 
-      <button className="icono">
-        <Icon tipo={3}  color={0} /> Usuario
-      </button>
+      <NavLink to="/usuario" className="icono">
+        {({ isActive }) => (
+          <>
+            <Icon tipo={2} color={isActive ? 1 : 0} />
+            Usuario
+          </>
+        )}
+      </NavLink>
     </footer>
   );
 }

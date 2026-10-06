@@ -1,3 +1,4 @@
+import Icon from "./Icon"
 interface HorarioProps {
   estado?: number;
   fecha: string;
@@ -12,7 +13,13 @@ function Horario({ estado = 0, fecha, deporte }: HorarioProps) {
     "La clase se canceló",
     "Pendiente"//mañana
   ];
-
+const iconos = [
+    <Icon tipo={6} tamaño={2} color={3} />,
+    <Icon tipo={7} tamaño={2} color={5} />,
+    <Icon tipo={8} tamaño={2} color={4} />,
+    <Icon tipo={6} tamaño={2} color={4} />,
+    <Icon tipo={6} tamaño={2} color={0} />,
+  ];
   const fechaHorario = new Date(fecha);
   const ahora = new Date();
 
@@ -64,7 +71,9 @@ function Horario({ estado = 0, fecha, deporte }: HorarioProps) {
   return (
     <article className={`rectangulo ${estadoFinal == 3 ? "borderojo" : ""}`}>
       <div className="divisorx">
-        <div className={`cuadrado iconoestado${estadoFinal}`}></div>
+        <div className={`cuadrado iconoestado${estadoFinal}`}>
+          {iconos[estadoFinal]}
+        </div>
 
         <div className="texto">
           <h4>{deporte ? deporte : "Deporte"}</h4>
@@ -76,7 +85,7 @@ function Horario({ estado = 0, fecha, deporte }: HorarioProps) {
         <span className="barra" />
 
         <div className="divisory">
-          <img src="" alt="" />
+          <Icon tipo={5} tamaño={1.6} />
 
           <p>
             {horaNumero}
