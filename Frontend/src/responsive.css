@@ -25,10 +25,10 @@ header{
     padding-left: 2%;
     padding-right: 2%;
 }
-button.escanear{
+a.escanear{
     display:none;
 }
-button.icono{
+a.icono{
   display: flex;
   justify-content: center;
   align-items: center;
