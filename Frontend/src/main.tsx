@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Buscar from './pages/Buscar'
 import User from './pages/User'
+import Clases from './pages/Clases'
 import './index.css'
 import './responsive.css'
 import Escanear from './pages/Escanear'
@@ -20,7 +21,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/*" element={<Error />} />
         <Route path="/crear" element={<Sign />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/horarios" element={<Home />} />
+        <Route path="/horarios" element={<Clases />} />
         <Route path="/buscar" element={<Buscar />} />
         <Route path="/usuario" element={<User />} />
         <Route path="/escanear" element={<Escanear />} />
