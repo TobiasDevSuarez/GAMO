@@ -1,7 +1,6 @@
 import ListaHorarios from "../components/ListaHorarios"
 import NavBar from "../components/Navbar"
 import Header from "../components/Header"
-import Calendario from "../components/Calendario"
 function Home() {
   const horarios = [
     { estado: 0, fecha: "2026-10-06T10:00:00", deporte:"Voley" },

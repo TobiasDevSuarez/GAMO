@@ -9,7 +9,17 @@ import Tilde from "../assets/svg/tilde.svg?raw";
 import Equis from "../assets/svg/equis.svg?raw";
 import Logomini from "../assets/svg/logomini.svg?raw";
 
-function Icon({ tipo = 0, color= undefined, tamaño = 2.6 }) {
+interface IconProps {
+  tipo?: number;
+  color?: number;
+  tamaño?: number;
+}
+
+function Icon({
+  tipo = 0,
+  color,
+  tamaño = 2.6,
+}: IconProps) {
 
   const iconos = [
     Home,
@@ -21,7 +31,7 @@ function Icon({ tipo = 0, color= undefined, tamaño = 2.6 }) {
     Reloj2,
     Tilde,
     Equis,
-    Logomini
+    Logomini,
   ];
 
   const colores = [
@@ -35,35 +45,35 @@ function Icon({ tipo = 0, color= undefined, tamaño = 2.6 }) {
 
   const imagen = iconos[tipo];
 
-  let svg = imagen;
-
-  // Solo cambia el color si se especificó uno
+  // Si se especificó un color
   if (color !== undefined) {
-    svg = svg.replaceAll("currentColor", colores[color]);
+    const svg = imagen
+      .replaceAll("currentColor", colores[color])
+      .replace(
+        "<svg",
+        `<svg width="${tamaño}vh" height="${tamaño}vh"`
+      );
 
-  svg = svg.replace(
-    "<svg",
-    `<svg width="${tamaño}vh" height="${tamaño}vh"`
-  );
-
-  return (
-    <p
-      className="icon"
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
-  );
-
-  }
- return (
-      <img
-        src={`data:image/svg+xml,${encodeURIComponent(imagen)}`}
-        alt=""
+    return (
+      <span
         className="icon"
-        style={{
-          width: `${tamaño}vh`,
-          height: `${tamaño}vh`
-        }}
+        dangerouslySetInnerHTML={{ __html: svg }}
       />
     );
   }
+
+  // Si NO se especificó color
+  return (
+    <img
+      src={`data:image/svg+xml,${encodeURIComponent(imagen)}`}
+      alt=""
+      className="icon"
+      style={{
+        width: `${tamaño}vh`,
+        height: `${tamaño}vh`,
+      }}
+    />
+  );
+}
+
 export default Icon;

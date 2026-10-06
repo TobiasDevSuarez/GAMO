@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
-import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 function Escanear() {
   const [codigo, setCodigo] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const scanner = new Html5Qrcode("lector-qr");
