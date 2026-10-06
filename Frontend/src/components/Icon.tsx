@@ -11,6 +11,8 @@ import Logomini from "../assets/svg/logomini.svg?raw";
 import Logo from "../assets/svg/logo.svg?raw";
 import Socio from "../assets/svg/socios.svg?raw";
 import Triste from "../assets/svg/triste.svg?raw";
+import Puntos from "../assets/svg/puntos.svg?raw";
+import Ubicacion from "../assets/svg/ubicacion.svg?raw";
 
 interface IconProps {
   tipo?: number;
@@ -38,6 +40,8 @@ function Icon({
     Logo,         //10
     Socio,        //11
     Triste,       //12
+    Puntos,       //13
+    Ubicacion,    //14
   ];
 
   const colores = [

@@ -26,6 +26,10 @@ function Header() {
         <h1>
           Mi <br /> usuario
         </h1>
+      ) : location.pathname === "/socios" ? (
+        <h1>
+          Mis <br /> Socios
+        </h1>
       ) : <></>
     }
 

@@ -63,6 +63,10 @@ section.centro .listabloques{
 }
 
 @media (max-width: 380px) {
+    .texto2 h4,.texto h4 {
+  max-width: 20vw;
+
+}
     h4{
         font-size: 2vh;
     }
