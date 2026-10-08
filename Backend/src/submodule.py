@@ -20,7 +20,7 @@ def get_supabase_config(env):
 async def get_socios(env):
     url, key = get_supabase_config(env)
     response = await fetch(
-        f"{url}/rest/v1/SOCIO?select=*",
+        f"{url}/rest/v1/socio?select=*",
         headers={
             "apikey": key,
             "Authorization": f"Bearer {key}",
