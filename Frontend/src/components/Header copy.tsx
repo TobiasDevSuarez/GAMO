@@ -16,7 +16,7 @@ function Header() {
         </h1>
       ) : location.pathname === "/home" ? (
         <h1>
-          Bienvenido  <br /> Luciano
+          Bienvenido <br /> Luciano
         </h1>
       ) : location.pathname === "/buscar" ? (
         <h1>
@@ -24,11 +24,11 @@ function Header() {
         </h1>
       ) : location.pathname === "/usuario" ? (
         <h1>
-          Mi  <br /> usuario
+          Mi <br /> usuario
         </h1>
       ) : location.pathname === "/socios" ? (
         <h1>
-          Mis  <br /> Socios
+          Mis <br /> Socios
         </h1>
       ) : <></>
     }
@@ -43,7 +43,7 @@ function Header() {
         <p>Gestión para centros deportivos</p>
         </>
       )  : (
-       <Icon tipo={9} tamaño={5} />
+        <Icon tipo={9} tamaño={6.6} />
       )}
     </header>
   );

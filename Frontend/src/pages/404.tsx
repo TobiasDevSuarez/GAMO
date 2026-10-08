@@ -1,12 +1,11 @@
 import Icon from "../components/Icon";
 import {  useNavigate } from "react-router-dom";
-import { storage } from "../database/Storage";
+import Main from "../components/Main";
 function Error() {
   const navigate = useNavigate();
-  const modoOscuro = storage.get<boolean>("modoOscuro");
   
   return (
-    <main className={modoOscuro ? "dark": ""}>
+    <Main>
       
 
       <section className="centro">
@@ -21,7 +20,7 @@ function Error() {
    
       </section>
 
-    </main>
+   </Main>
   );
 }
 

@@ -13,6 +13,7 @@ import Escanear from './pages/Escanear'
 import Sign from './pages/Sign'
 import Error from './pages/404'
 import Socios from './pages/Socios'
+import Socioparticular from './pages/Socioparticular'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/horarios" element={<Clases />} />
         <Route path="/buscar" element={<Buscar />} />
         <Route path="/socios" element={<Socios />} />
+        <Route path="/socios/:id" element={<Socioparticular />} />
         <Route path="/usuario" element={<User />} />
         <Route path="/escanear" element={<Escanear />} />
       </Routes>

@@ -1,11 +1,12 @@
 import NavBar from "../components/Navbar"
 import Header from "../components/Header"
-import { storage } from "../database/Storage";
+
+import Main from "../components/Main";
 function Home() {
-  const modoOscuro = storage.get<boolean>("modoOscuro");
+
  
   return (
-    <main className={modoOscuro ? "dark": ""}>
+    <Main>
       
 
       <section>
@@ -17,7 +18,7 @@ function Home() {
       </section>
 
      <NavBar/>
-    </main>
+   </Main>
   );
 }
 

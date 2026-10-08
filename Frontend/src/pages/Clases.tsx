@@ -1,9 +1,10 @@
 import ListaHorarios from "../components/ListaHorarios"
 import NavBar from "../components/Navbar"
 import Header from "../components/Header"
-import { storage } from "../database/Storage";
+import Main from "../components/Main";
+
 function Clases() {
-  const modoOscuro = storage.get<boolean>("modoOscuro");
+
   const horarios = [
     { estado: 0, fecha: "2026-10-06T10:00:00", deporte:"Voley" },
     { estado: 1, fecha: "2026-10-06T09:00:00", deporte:"Muay thai" },
@@ -12,7 +13,7 @@ function Clases() {
     { estado: 0, fecha: "2026-10-07T09:00:00", deporte:"Muay thai" },
   ];
   return (
-    <main className={modoOscuro ? "dark": ""}>
+    <Main>
       
 
       <section>
@@ -25,7 +26,7 @@ function Clases() {
       </section>
 
      <NavBar/>
-    </main>
+   </Main>
   );
 }
 

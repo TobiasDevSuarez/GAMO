@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import { storage } from "../database/Storage";
+
+import Main from "../components/Main";
 
 function Login() {
-  if (!storage.exist("modoOscuro")) {
-    storage.set("modoOscuro", false);
-  }
-  const modoOscuro = storage.get<boolean>("modoOscuro");
+ 
   return (
-    <main className={modoOscuro ? " login dark": "login"}>
+    <Main>
         <Header></Header>
 
       <section className="login">
@@ -30,7 +28,7 @@ function Login() {
   
       </section>
       
-    </main>
+   </Main>
   );
 }
 

@@ -2,9 +2,8 @@ import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Fecha from "../components/Fecha";
-import { storage } from "../database/Storage";
+import Main from "../components/Main";
 function Sign() {
-  const modoOscuro = storage.get<boolean>("modoOscuro");
   
   const [paso, setPaso] = useState(1);
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ function Sign() {
   };
 
   return (
-    <main className={modoOscuro ? "login dark": "login"}>
+    <Main>
       <Header />
 
       <section className="login">
@@ -154,7 +153,7 @@ function Sign() {
 
         </form>
       </section>
-    </main>
+  </Main>
   );
 }
 
