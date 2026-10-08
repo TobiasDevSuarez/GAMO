@@ -18,3 +18,7 @@ export async function api<T>(
 
   return response.json();
 }
+
+export async function get<T>(endpoint: string): Promise<T> {
+  return api<T>(endpoint, { method: "GET" });
+}

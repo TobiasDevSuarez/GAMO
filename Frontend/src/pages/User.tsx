@@ -20,7 +20,7 @@ function User() {
   }
 
 useEffect(() => {
-  api("/")
+  api("/socio")
     .then((resultado) => {
       console.log("Respuesta de la API:", resultado);
       setRespuesta(resultado);

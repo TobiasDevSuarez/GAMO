@@ -1,10 +1,10 @@
-from workers import Response, WorkerEntrypoint
 
-from submodule import get_socios
+from workers import WorkerEntrypoint
+import asgi
+
+from app import app
 
 
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
-        socios = await get_socios(self.env)
-
-        return Response.json(socios)
+        return await asgi.fetch(app, request.js_object, self.env)
