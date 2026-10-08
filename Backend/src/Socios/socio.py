@@ -9,7 +9,7 @@ import json
 
 router = APIRouter()
 
-#get all socios
+#get all socios 
 @router.get("")
 async def get_all_socios(request: Request):
     #falta la auth del usuario para saber si tiene permisos 

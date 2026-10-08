@@ -31,4 +31,4 @@ class SocioCreate(BaseModel):
     apellido: str
     id_sede: int
     id_grupo: int
-    estado: Optional[EstadoUsuarioEnum] = EstadoUsuarioEnum.activ
+    estado: Optional[EstadoUsuarioEnum] = EstadoUsuarioEnum.activo

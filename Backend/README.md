@@ -72,3 +72,7 @@ y una clave **publishable/anon**. No uses ni publiques una clave `service_role`.
 No subas `.dev.vars` ni `.env` con credenciales al repositorio.
 
 Para desplegar en Cloudflare, configura esos valores como secretos del Worker.
+
+
+
+npx wrangler dev
