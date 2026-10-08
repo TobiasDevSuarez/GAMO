@@ -1,5 +1,6 @@
 from workers import fetch
 import hashlib
+import os
 
 async def get_socios(env):
     url = env.SUPABASE_URL
@@ -23,12 +24,15 @@ async def get_socios(env):
 
     return await response.json()
 
-def hash(password : str, salt):
+def hash(password : str, salt : bytes) -> str:
     return hashlib.sha256(salt + password.encode()).hexdigest()
 
-async def login(username, password : str):
-    salt = 0 # buscar salt
-    hashed_object = hash(password, salt)
+def get_random_salt() -> bytes:
+    return os.urandom(16)
+
+async def login(username : str, password : str):
+    salt : bytes = 0 # buscar salt
+    hashed_object : str = hash(password, salt)
 
     user = 0 # Buscar al usuario
 
