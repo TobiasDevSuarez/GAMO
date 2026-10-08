@@ -213,6 +213,19 @@ span{
   margin-bottom: 2vh;
 
 }
+.bloque4{
+  width: 100%;
+  max-width: 50vh;
+  display:flex;
+  flex-direction: column;
+  gap: 1vh;
+  align-items: center;
+
+  padding-left: 2vh;
+  padding-right: 2vh;
+  margin-bottom: 2vh;
+
+}
 .bloque3{
   width: 100%;
   max-width: 50vh;

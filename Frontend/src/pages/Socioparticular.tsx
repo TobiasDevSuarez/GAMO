@@ -14,7 +14,7 @@ function Socioparticular() {
       <Link to="/socios" className="circuloazul2"><Icon tipo={18} tamaño={2}/></Link>
      </header>
      <div className="listabloques">
-      <div className="bloque2">
+      <div className="bloque4">
         <div className="cuadrado2 iconoestado4"></div>
 <h4>Luciano Barbini</h4>
         <div>
