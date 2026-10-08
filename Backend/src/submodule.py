@@ -30,18 +30,54 @@ def hash(password : str, salt : bytes) -> str:
 def get_random_salt() -> bytes:
     return os.urandom(16)
 
-async def login(username : str, password : str):
-    salt : bytes = 0 # buscar salt
+
+async def login(email : str, password : str):
+
+    user = await get_user_from_email(env, email)
+    salt : bytes = user.get("salt", None)
+
     hashed_object : str = hash(password, salt)
-
-    user = 0 # Buscar al usuario
-
-    if hashed_object == user.hashed_password:
+    if hashed_object == user.get("hash", None):
         pass
         # Devolver token
     else:
         pass
         # Devolver mensaje fallido
+
+
+
+
+#get socio por estado
+@router.get("/estado/{estado}")
+async def get_socios_nombre(request: Request, estado: str):
+    #falta la auth del usuario para saber si tiene permisos 
+    try:
+        return await socio_nombre(request.scope["env"], estado)
+    except  HTTPException as e:
+        raise HTTPException(400, detail=e.args) 
+    
+    
+
+#----------------------------------------#
+
+async def get_user_from_email(env, email : str):
+    url, key = get_supabase_config(env)
+    response = await fetch(
+        f"{url}/rest/v1/usuario?email=eq.{email.strip()}&select=*",
+        headers={
+            "apikey": key,
+            "Authorization": f"Bearer {key}",
+        },
+    )
+
+    if not response.ok:
+        raise HTTPException(
+            status_code=response.status,
+            detail=await response.text(),
+        )
+
+    return await response.json()
+
 
 
 
@@ -58,8 +94,5 @@ END
 '''
 
 
-async def update_user(user_id, new_status, env):
-    # Un update simple
-    pass
 
 
