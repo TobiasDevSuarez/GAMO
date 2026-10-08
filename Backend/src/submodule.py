@@ -23,14 +23,22 @@ async def get_socios(env):
 
     return await response.json()
 
-async def login(username, password):
-    hashed_password = hashlib.sha256(password)
+def hash(password : str, salt):
+    return hashlib.sha256(salt + password.encode()).hexdigest()
+
+async def login(username, password : str):
+    salt = 0 # buscar salt
+    hashed_object = hash(password, salt)
 
     user = 0 # Buscar al usuario
-    if hashed_password == user.hashed_password:
+
+    if hashed_object == user.hashed_password:
+        pass
         # Devolver token
     else:
+        pass
         # Devolver mensaje fallido
+
 
 
 '''
