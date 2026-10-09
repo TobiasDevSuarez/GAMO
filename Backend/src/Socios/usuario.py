@@ -1,10 +1,13 @@
+import os
+
 from fastapi import APIRouter, Request
 from fastapi import APIRouter, Depends, HTTPException
 from supabase_config import get_supabase_config
-from model import UsuarioCreate
+from model import UsuarioCreate, LoginCreate
 from workers import fetch
 import uuid
 import json
+import hashlib
 
 
 router = APIRouter()
@@ -100,3 +103,78 @@ async def create_user_with_auth(env, datos_usuario: dict, password: str):
         )
 
     return await db_resp.json()
+
+
+
+
+def hash(password : str, salt : bytes) -> str:
+    return hashlib.sha256(salt + password.encode()).hexdigest()
+
+def get_random_salt() -> bytes:
+    return os.urandom(16)
+
+
+@router.post("/login")
+async def router_login(login: LoginCreate, request: Request):
+    try:
+        return await login(request.scope["env"], login.email, login.password)
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+async def login(env, email : str, password : str):
+
+    user = await get_user_from_email(env, email)
+    salt : bytes = user.get("salt", None)
+
+    hashed_object : str = hash(password, salt)
+    if hashed_object == user.get("hash", None):
+        return {"jwt": }
+
+    else:
+        return {"error": "Credenciales inválidas"}
+ 
+
+
+    
+
+#----------------------------------------#
+
+async def get_user_from_email(env, email : str):
+    url, key = get_supabase_config(env)
+    response = await fetch(
+        f"{url}/rest/v1/usuario?email=eq.{email.strip()}&select=*",
+        headers={
+            "apikey": key,
+            "Authorization": f"Bearer {key}",
+        },
+    )
+
+    if not response.ok:
+        raise HTTPException(
+            status_code=response.status,
+            detail=await response.text(),
+        )
+
+    return await response.json()
+
+
+
+
+'''
+trigger de sql (puede que esté algo mal)
+
+CREATE TRIGGER set_payment_status
+AFTER UPDATE ON deudas_pagos
+FOR EACH ROW
+BEGIN
+    IF NEW.fecha_pago is not NULL and NEW.fecha_pago != "" THEN
+        UPDATE socio SET estado_pago = "Al día"
+END
+'''
+
+
+
+
