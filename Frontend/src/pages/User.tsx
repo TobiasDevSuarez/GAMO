@@ -2,16 +2,15 @@ import NavBar from "../components/Navbar";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
 import { storage } from "../database/Storage";
-import { api } from "../database/Api";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 
 function User() {
   const [modoOscuro, setModoOscuro] = useState(
     storage.get<boolean>("modoOscuro") ?? false
   );
 
-  const [respuesta, setRespuesta] = useState<unknown>(null);
-
+  
   function cambiarModo(e: React.ChangeEvent<HTMLSelectElement>) {
     const nuevoModo = e.target.value === "true";
 
@@ -19,20 +18,12 @@ function User() {
     storage.set("modoOscuro", nuevoModo);
   }
 
-useEffect(() => {
-  api("/socio")
-    .then((resultado) => {
-      console.log("Respuesta de la API:", resultado);
-      setRespuesta(resultado);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}, []);
+
   return (
     <main className={modoOscuro ? "dark" : ""}>
-      <section>
         <Header />
+
+      <section>
 
         <div className="listabloques">
           <div className="bloque">
@@ -50,11 +41,7 @@ useEffect(() => {
             </Link>
           </div>
 
-          <div className="bloque">
-            <pre>
-              {JSON.stringify(respuesta, null, 2)}
-            </pre>
-          </div>
+         
         </div>
       </section>
 

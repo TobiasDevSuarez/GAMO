@@ -6,9 +6,9 @@ function Buscar() {
   return (
     <Main>
       
+     <Header/>
 
       <section>
-     <Header/>
      <div className="listabloques">
       <div className="bloque">
         <input type="text" className="blanco" />

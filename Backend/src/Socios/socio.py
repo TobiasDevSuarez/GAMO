@@ -11,13 +11,11 @@ router = APIRouter()
 
 #get all socios 
 @router.get("")
-async def get_all_socios():
-    #falta la auth del usuario para saber si tiene permisos 
-   return "hola"
-   # try:
-   #     return await get_socios(request.scope["env"])
-  #  except  HTTPException as e:
-  #      raise HTTPException(400, detail=e.args) 
+async def get_all_socios(request: Request):
+    try:
+        return await get_socios(request.scope["env"])
+    except  HTTPException as e:
+        raise HTTPException(400, detail=e.args) 
     
     
 async def get_socios(env):

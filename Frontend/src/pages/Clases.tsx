@@ -15,9 +15,9 @@ function Clases() {
   return (
     <Main>
       
+     <Header/>
 
       <section>
-     <Header/>
      <div className="listabloques">
       <ListaHorarios horarios={horarios} />
 

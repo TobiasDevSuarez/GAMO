@@ -8,11 +8,14 @@ function Home() {
   return (
     <Main>
       
-
-      <section>
      <Header/>
+
+      <section >
      <div className="listabloques">
-      
+      <div className="listacentro">
+        <img src="proceso.svg" className="proceso" style={{width:"12vh"}} alt="" />
+        <h3>En proceso</h3>
+      </div>
      </div>
    
       </section>
