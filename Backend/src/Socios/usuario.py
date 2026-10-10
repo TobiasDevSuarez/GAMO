@@ -153,7 +153,7 @@ async def get_user_group(env, user_id: str):
         f"{url}/rest/v1/usuario?id_usuario=eq.{user_id}&select=grupo_usuario(nombre)",
         headers={
             "apikey": key,
-            "Authorization": "******",
+            "Authorization": f"Bearer {key}",
         },
     )
 
