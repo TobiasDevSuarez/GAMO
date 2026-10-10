@@ -34,6 +34,7 @@ export async function getSocios<T>() {
 }
 
 
+
 type Credenciales = {
   email: string;
   password: string;
@@ -45,5 +46,32 @@ export async function iniciarSesion<T>(
   return api<T>("/usuario/login", {
     method: "POST",
     body: JSON.stringify(credenciales),
+  });
+}
+
+
+
+type SocioData = {
+  persona: {
+    nombre: string;
+    apellido: string;
+    dni: string;
+    telefono: string;
+    fecha_nacimiento: string;
+  };
+  usuario: {
+    email: string;
+    nombre_usuario: string;
+    password: string;
+  };
+  id_plan: number;
+};
+
+export async function setSocio<T>(
+  socio: SocioData
+): Promise<T> {
+  return api<T>("/socio", {
+    method: "POST",
+    body: JSON.stringify(socio),
   });
 }

@@ -1,8 +1,9 @@
+
 import NavBar from "../components/Navbar";
 import Icon from "../components/Icon";
 import Main from "../components/Main";
 import { Link, useNavigate } from "react-router-dom";
-import { api } from "../database/Api";
+import { setSocio } from "../database/Api";
 import { useState } from "react";
 
 function Agregarsocio() {
@@ -13,9 +14,11 @@ function Agregarsocio() {
     apellido: "",
     dni: "",
     telefono: "",
-    id_sede: "",
+    fecha_nacimiento: "",
+    email: "",
+    nombre_usuario: "",
+    password: "",
     id_plan: "",
-    estado: "activo",
   });
 
   const [cargando, setCargando] = useState(false);
@@ -38,13 +41,20 @@ function Agregarsocio() {
     setError("");
 
     try {
-      await api("/socio", {
-        method: "POST",
-        body: JSON.stringify({
-          ...formulario,
-          id_sede: Number(formulario.id_sede),
-          id_plan: Number(formulario.id_plan),
-        }),
+      await setSocio({
+        persona: {
+          nombre: formulario.nombre,
+          apellido: formulario.apellido,
+          dni: formulario.dni,
+          telefono: formulario.telefono,
+          fecha_nacimiento: formulario.fecha_nacimiento,
+        },
+        usuario: {
+          email: formulario.email,
+          nombre_usuario: formulario.nombre_usuario,
+          password: formulario.password,
+        },
+        id_plan: Number(formulario.id_plan),
       });
 
       navigate("/socios");
@@ -59,17 +69,17 @@ function Agregarsocio() {
   return (
     <Main>
       <header className="h2">
-          <h1>Agregar socio</h1>
+        <h1>Agregar socio</h1>
 
-          <Link to="/socios" className="circuloazul2">
-            <Icon tipo={18} tamaño={2} />
-          </Link>
-        </header>
+        <Link to="/socios" className="circuloazul2">
+          <Icon tipo={18} tamaño={2} />
+        </Link>
+      </header>
+
       <section>
-        
-
         <div className="listabloques">
           <br />
+
           <div className="bloque4">
             <form onSubmit={crearSocio} className="listay2">
               <label htmlFor="nombre">Nombre</label>
@@ -121,19 +131,54 @@ function Agregarsocio() {
                 required
               />
 
-              <label htmlFor="id_sede">Sede</label>
-              <select
+              <label htmlFor="fecha_nacimiento">
+                Fecha de nacimiento
+              </label>
+              <input
                 className="blanco"
-                id="id_sede"
-                name="id_sede"
-                value={formulario.id_sede}
+                id="fecha_nacimiento"
+                name="fecha_nacimiento"
+                type="date"
+                value={formulario.fecha_nacimiento}
                 onChange={cambiar}
                 required
-              >
-                <option value="">Seleccionar sede</option>
-                <option value="1">Sede 1</option>
-                <option value="2">Sede 2</option>
-              </select>
+              />
+
+              <label htmlFor="email">Correo electrónico</label>
+              <input
+                className="blanco"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Correo electrónico"
+                value={formulario.email}
+                onChange={cambiar}
+                required
+              />
+
+              <label htmlFor="nombre_usuario">Nombre de usuario</label>
+              <input
+                className="blanco"
+                id="nombre_usuario"
+                name="nombre_usuario"
+                type="text"
+                placeholder="Nombre de usuario"
+                value={formulario.nombre_usuario}
+                onChange={cambiar}
+                required
+              />
+
+              <label htmlFor="password">Contraseña</label>
+              <input
+                className="blanco"
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Contraseña"
+                value={formulario.password}
+                onChange={cambiar}
+                required
+              />
 
               <label htmlFor="id_plan">Plan</label>
               <select
@@ -147,20 +192,6 @@ function Agregarsocio() {
                 <option value="">Seleccionar plan</option>
                 <option value="1">Plan 1</option>
                 <option value="2">Plan 2</option>
-              </select>
-
-              <label htmlFor="estado">Estado</label>
-              <select
-                className="blanco"
-                id="estado"
-                name="estado"
-                value={formulario.estado}
-                onChange={cambiar}
-                required
-              >
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
-                <option value="pendiente">Pendiente</option>
               </select>
 
               {error && <p className="rojo">{error}</p>}
