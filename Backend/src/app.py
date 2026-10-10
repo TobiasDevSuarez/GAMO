@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from Socios import socio, usuario, profesores
+from Socios import socio, usuario
 
 
 @asynccontextmanager
@@ -20,7 +20,4 @@ app.include_router(usuario.router,
                    tags=['Usuario'],
                    responses={404: {"Usuario": "Not Found"}})
 
-app.include_router(profesores.router,
-                   prefix='/profesores',
-                   tags=['profesores'],
-                   responses={404: {"profesores": "Not Found"}})
+
