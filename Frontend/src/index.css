@@ -748,8 +748,8 @@ a.escanear{
 }
 
 .texto2 h4,.texto h4 {
-  max-width: 20vh;
   white-space: nowrap;
+  text-wrap: wrap;
   overflow: hidden;
   padding-bottom: 2vh;
   text-overflow: ellipsis;

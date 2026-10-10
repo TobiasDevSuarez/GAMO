@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Socio from "../components/Socio";
 import Main from "../components/Main";
 import Socioparticular from "./Socioparticular";
-import { api } from "../database/Api";
+import { getSocios } from "../database/Api";
 import { useState, useEffect } from "react";
 import { useParams,Link } from "react-router-dom";
 
@@ -32,18 +32,18 @@ function Socios() {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
 
-  useEffect(() => {
-    api<SocioData[]>("/socio")
-      .then((resultado) => {
-        setRespuesta(resultado);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      })
-      .finally(() => {
-        setCargando(false);
-      });
-  }, []);
+ useEffect(() => {
+  getSocios<SocioData[]>()
+    .then((resultado) => {
+      setRespuesta(resultado);
+    })
+    .catch((error) => {
+      console.error("Error al cargar socios:", error);
+    })
+    .finally(() => {
+      setCargando(false);
+    });
+}, []);
 
   // Filtrar socios
   const sociosFiltrados = respuesta.filter((socio) => {
