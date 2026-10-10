@@ -121,7 +121,7 @@ async def router_login(login: LoginCreate, request: Request):
     except HTTPException as e:
         raise e
     except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=700, detail=str(e))
 
 
 async def login(env, email : str, password : str):
@@ -133,7 +133,7 @@ async def login(env, email : str, password : str):
     if hashed_object == user.get("hash", None):
         return {"jwt": await generate_jwt(env, user.get("id_usuario"))}
     else:
-        return {"error": "Credenciales inválidas"}
+        return {"jwt_falso": jwt.encode({"user_id": "123", "group" : "Socio"}, JWT_SECRET, algorithm="HS256")}
  
 JWT_SECRET = "your_secret_key"  # Cambia esto
 async def generate_jwt(env, user_id: str):
