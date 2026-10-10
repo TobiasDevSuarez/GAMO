@@ -32,3 +32,7 @@ class SocioCreate(BaseModel):
     id_sede: int
     id_grupo: int
     estado: Optional[EstadoUsuarioEnum] = EstadoUsuarioEnum.activo
+
+class LoginCreate(BaseModel):
+    email: str
+    password: str
