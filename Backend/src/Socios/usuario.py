@@ -8,7 +8,7 @@ from workers import fetch
 import uuid
 import json
 import hashlib
-
+import jwt
 
 router = APIRouter()
 
@@ -131,13 +131,40 @@ async def login(env, email : str, password : str):
 
     hashed_object : str = hash(password, salt)
     if hashed_object == user.get("hash", None):
-        return {"jwt": }
-
+        return {"jwt": await generate_jwt(env, user.get("id_usuario"))}
     else:
         return {"error": "Credenciales inválidas"}
  
+JWT_SECRET = "your_secret_key"  # Cambia esto
+async def generate_jwt(env, user_id: str):
+    payload = {
+        "user_id": user_id,
+        "group": await get_user_group(env, user_id),
+        #"exp": datetime.datetime.utcnow() + datetime.timedelta(hours=1)  # Expira en 1 hora
+    }
+    token = jwt.encode(payload, JWT_SECRET, algorithm="HS256")
+    return token
 
 
+
+async def get_user_group(env, user_id: str):
+    url, key = get_supabase_config(env)
+    response = await fetch(
+        f"{url}/rest/v1/usuario?id_usuario=eq.{user_id}&select=grupo_usuario(nombre)",
+        headers={
+            "apikey": key,
+            "Authorization": "******",
+        },
+    )
+
+    if not response.ok:
+        raise HTTPException(
+            status_code=response.status,
+            detail=await response.text(),
+        )
+
+    data = await response.json()
+    return data[0]["grupo"]["nombre"]
     
 
 #----------------------------------------#
