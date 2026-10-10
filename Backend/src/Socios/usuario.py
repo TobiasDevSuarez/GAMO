@@ -189,8 +189,6 @@ async def get_user_from_email(env, email : str):
     return await response.json()
 
 
-
-
 '''
 trigger de sql (puede que esté algo mal)
 
