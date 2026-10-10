@@ -4,6 +4,7 @@ from fastapi import APIRouter, Request
 from fastapi import APIRouter, Depends, HTTPException
 from supabase_config import get_supabase_config
 from model import UsuarioCreate, LoginCreate
+from profesores import get_trainer_by_id
 from workers import fetch
 import uuid
 import json

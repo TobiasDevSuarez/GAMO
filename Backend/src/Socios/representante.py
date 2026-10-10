@@ -9,20 +9,20 @@ import json
 
 router = APIRouter()
 
-#get all profersores 
+#get all representantes 
 @router.get("")
-async def get_all_profersores(request: Request):
+async def get_all_representantes(request: Request):
     #falta la auth del usuario para saber si tiene permisos 
     try:
-        return await get_profersores(request.scope["env"])
+        return await get_representantes(request.scope["env"])
     except  HTTPException as e:
         raise HTTPException(400, detail=e.args) 
     
     
-async def get_profersores(env):
+async def get_representantes(env):
     url, key = get_supabase_config(env)
     response = await fetch(
-        f"{url}/rest/v1/profesor?select=*",
+        f"{url}/rest/v1/representante?select=*",
         headers={
             "apikey": key,
             "Authorization": f"Bearer {key}",
@@ -41,10 +41,10 @@ async def get_profersores(env):
 
     
     
-async def get_profesor_by_id(env, id_profersor: str):
+async def get_representante_by_id(env, id_representante: str):
     url, key = get_supabase_config(env)
     response = await fetch(
-        f"{url}/rest/v1/profesor?id_profesor=eq.{id_profersor}&select=*",
+        f"{url}/rest/v1/representante?id_representante=eq.{id_representante}&select=*",
         headers={
             "apikey": key,
             "Authorization": f"Bearer {key}",
